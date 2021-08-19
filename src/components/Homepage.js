@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import MovieDisplay from './MovieDisplay';
 
 function Homepage() {
   const [movie, setMovie] = useState('');
@@ -29,15 +30,18 @@ function Homepage() {
   }
 
   return (
-    <div>
-      <form onSubmit={movieResults}>
-        <label>
-          Movie:
-          <input type="text" value={movie} onChange={handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    </div>
+    <>
+      <div>
+        <form onSubmit={movieResults}>
+          <label>
+            Movie:
+            <input type="text" value={movie} onChange={handleChange} />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+      <div>{movieList[0] ? <MovieDisplay movieInfo={movieList} /> : <></>}</div>
+    </>
   );
 }
 
